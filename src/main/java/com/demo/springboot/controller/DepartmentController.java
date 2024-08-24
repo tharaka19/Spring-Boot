@@ -1,6 +1,7 @@
 package com.demo.springboot.controller;
 
 import com.demo.springboot.entity.Department;
+import com.demo.springboot.error.DepartmentNotFoundException;
 import com.demo.springboot.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/{id}")
-    public Department fetchDepartmentById(@PathVariable("id") Long departmentId){
+    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return departmentService.fetchDepartmentById(departmentId);
     }
 
