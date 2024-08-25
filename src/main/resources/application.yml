@@ -1,12 +1,57 @@
 server:
   port: 8082
+
 spring:
   application:
     name: spring-boot
+  profiles:
+    active: dev
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: Sheliya@123
     url: jdbc:mysql://localhost:3306/spring-boot
+    username: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Hello world
+
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: Sheliya@123
+    url: jdbc:mysql://localhost:3306/spring-boot-qa
+    username: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Hello world
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: Sheliya@123
+    url: jdbc:mysql://localhost:3306/spring-boot-prod
     username: root
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
